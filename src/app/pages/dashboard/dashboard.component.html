@@ -1,0 +1,137 @@
+<ni-card>
+  <div class="row">
+    <div class="col-lg-12">
+      <h5 class="mt-0">Completed Status</h5>
+      <div class="chart-container">
+        <div id="amchart-1" [style.width.%]="100" [style.height.%]="100"></div>
+      </div>
+    </div>
+    <div class="col-lg-12">
+    <agm-map [latitude]="lat" [longitude]="lng">
+      <agm-marker *ngFor="let subarea of map" 
+      [latitude]="subarea.lat" 
+      [longitude]="subarea.lng">
+      </agm-marker>
+    </agm-map> 
+    </div>
+  </div>
+</ni-card>
+
+
+<div class="row">
+  <div class="col-md-6 col-xl-6">
+    <ni-card [bgColor]="''" class="chart-card">
+      <div class="chart">
+        <canvas baseChart [data]="doughnutChartData" [colors]="doughnutChartColors" [labels]="doughnutChartLabels" [legend]="false"
+          [options]="doughnutChartOptions" [chartType]="doughnutChartType"></canvas>
+      </div>
+
+      <div class="info">
+        <div class="title"><strong>{{locations.length}}</strong> <small>Total Towers Required</small></div>
+        <div class="small"> {{completedTowers.length}} Towers Completed</div>
+      </div>
+    </ni-card>
+  </div>
+  <div class="col-md-6 col-xl-6">
+    <ni-card [bgColor]="''" class="chart-card">
+      <div class="chart">
+        <canvas baseChart [data]="pieChartData" [colors]="pieChartColors" [labels]="pieChartLabels" [legend]="false" [options]="pieChartOptions"
+          [chartType]="pieChartType"></canvas>
+      </div>
+
+      <div class="info">
+        <div class="title"><strong>{{locations.length*3}}</strong> <small>Total Coverage Required</small></div>
+        <div class="small">{{completedCov}} On Air Completed</div>
+      </div>
+    </ni-card>
+  </div>
+</div>
+
+<ni-card>
+  <div class="row">
+    <div class="col-lg-4">
+      <h5 class="mt-0">Area Status</h5>
+      <div id="amchart-6" [style.width.%]="100" [style.height.px]="400"></div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+      <div id="amchart-8" [style.width.%]="100" [style.height.px]="400"></div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+      <ngx-charts-line-chart [scheme]="colorScheme" [results]="areaCoverageData" [gradient]="false" [xAxis]="true" [yAxis]="true"
+        [legend]="false" [showXAxisLabel]="false" [showYAxisLabel]="false" [autoScale]="true">
+      </ngx-charts-line-chart>
+
+    </div>
+
+
+  </div>
+</ni-card>
+
+<ni-card>
+  <div class="row">
+    <div class="col-lg-4">
+      <h5 class="mt-0">Total Status</h5>
+
+      <div class="chart-container">
+
+        <ngx-charts-pie-chart [scheme]="colorScheme" [results]="totalCivilData" [gradient]="false" [legend]="false" [explodeSlices]="false"
+          [labels]="true" [doughnut]="false">
+        </ngx-charts-pie-chart>
+
+      </div>
+      <p class="text-center">Civil Status</p>
+    </div>
+
+    <div class="col-lg-4">
+
+      <div class="chart-container">
+        <ngx-charts-bar-vertical [scheme]="colorScheme" [results]="totalCoverageData" [gradient]="false" [xAxis]="true" [yAxis]="true"
+          [legend]="false" [showXAxisLabel]="false" [showYAxisLabel]="false">
+        </ngx-charts-bar-vertical>
+
+      </div>
+      <br><br>
+      <p class="text-center">Coverage Status</p>
+    </div>
+
+    <div class="col-lg-4">
+
+      <div class="chart-container">
+        <ngx-charts-pie-chart [scheme]="colorScheme" [results]="totalOnAirData" [gradient]="false" [legend]="false" [explodeSlices]="false"
+          [labels]="true" [doughnut]="true">
+        </ngx-charts-pie-chart>
+
+      </div>
+      <br><br>
+      <p class="text-center">On Air Status</p>
+    </div>
+  </div>
+</ni-card>
+
+<ni-card>
+  <div class="row">
+
+    <div class="col-lg-12">
+      <h5 class="mt-0">Civil Work Completed</h5>
+      <div id="amchart-7" [style.width.%]="100" [style.height.px]="220"></div>
+    </div>
+  </div>
+
+  <div class="col-lg-12">
+    <br><br>
+      <h5 class="mt-0">Civil Work Not Yet Started</h5>
+ 
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker *ngFor="let subarea of notyetMap" 
+    [latitude]="subarea.lat" 
+    [longitude]="subarea.lng">
+    </agm-marker>
+  </agm-map> 
+  </div>
+</ni-card>

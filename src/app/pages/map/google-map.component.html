@@ -1,0 +1,8 @@
+<ni-card>
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker *ngFor="let subarea of map" 
+    [latitude]="subarea.lat" 
+    [longitude]="subarea.lng">
+    </agm-marker>
+  </agm-map>
+</ni-card>

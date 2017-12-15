@@ -1,0 +1,43 @@
+
+<ni-card >  
+    <div>
+        <button (click)="addform();showaddDiv()" ni-button [gradient]="['#a1c4fd', '#c2e9fb']"  >
+            Add Location
+          </button>
+      
+      </div>    
+            <br>
+    
+        <div id="add" class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Area</th>
+              <th>Sub-Area</th>
+              <th>Location</th>
+              <th>Assigned to</th>
+              <th>Edit/Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let loc of locations; let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{loc.area}}</td>
+              <td>{{loc.sub_area}}</td>
+              <td  style=" max-width:15em; word-wrap: break-word" >{{loc.location_title}}</td>
+              <td>{{loc.assigned_to}}</td>
+              <td>
+                <button md-icon-button color="accent"
+                (click)="onSelect(loc);editform()"
+                [class.selected]="loc === selectedLocation"><md-icon>mode_edit</md-icon></button>
+                <button md-icon-button color="warn"
+                (click)="delete(loc,loc.status[0].id,loc.status[1].id,loc.status[2].id)"><md-icon>delete_forever</md-icon></button>
+              
+              </td>
+            </tr>            
+            </tbody>
+          </table>
+        </div>
+
+      </ni-card>

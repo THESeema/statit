@@ -1,0 +1,80 @@
+<ni-card>
+    <table>
+        <tr>
+          <td><font color="#EA8080"><label><b>Show New Locations</b></label></font></td>
+          <td><label class="switch">
+     <input type="checkbox" (change)="shownewdiv($event)">
+        <span class="slider round"></span>
+      </label></td>
+        </tr>
+      </table>
+    
+      <div id="newdiv" style="display:none;" class="table-responsive">
+        <font color="#2196F3"><label><h4>New Locations</h4></label></font>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Area</th>
+              <th>Sub-Area</th>
+              <th>Location</th>
+              <th>Assigned to</th>
+              <th>Civil Status</th>
+              <th>Coverage Status</th>
+              <th>On Air Status</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let newsat of newstatus;let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{newsat.location.area}}</td>
+              <td>{{newsat.location.sub_area}}</td>
+              <td>{{newsat.location.location_title}}</td>
+              <td>{{newsat.location.assigned_to}}</td>
+              <td>{{newsat.civil_status}}</td>
+              <td>{{newsat.coverage_status}}</td>
+              <td>{{newsat.onAir_status}}</td>
+              <td> <button md-icon-button color="accent" (click)="onSelect(newsat,newsat.location.location_title);updateform()" [class.selected]="newsat === selectedLocation"><md-icon>mode_edit</md-icon></button>
+    
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <br>
+        <br>
+      </div>
+    
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Area</th>
+              <th>Sub-Area</th>
+              <th>Location</th>
+              <th>Assigned to</th>
+              <th>Civil Status</th>
+              <th>Coverage Status</th>
+              <th>On Air Status</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let sat of status;let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{sat.location.area}}</td>
+              <td>{{sat.location.sub_area}}</td>
+              <td>{{sat.location.location_title}}</td>
+              <td>{{sat.location.assigned_to}}</td>
+              <td>{{sat.civil_status}}</td>
+              <td>{{sat.coverage_status}}</td>
+              <td>{{sat.onAir_status}}</td>
+              <td> <button md-icon-button color="accent" (click)="onSelect(sat,sat.location.location_title);updateform()" [class.selected]="sat === selectedLocation"><md-icon>mode_edit</md-icon></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ni-card>
